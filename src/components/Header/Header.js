@@ -1,15 +1,9 @@
+import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import React from 'react';
-
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `blue`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+  <header>
     <div
       style={{
         margin: `0 auto`,
