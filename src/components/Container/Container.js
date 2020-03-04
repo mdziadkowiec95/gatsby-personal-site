@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Styled from './styles';
 
 const Container = ({ children }) => {
-  return <Styled.Wrapper>{children}</Styled.Wrapper>;
+  return <Styled.ContainerWrap>{children}</Styled.ContainerWrap>;
 };
 
 Container.propTypes = {
