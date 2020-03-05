@@ -5,32 +5,30 @@ export const BurgerButton = styled.button`
   position: fixed;
   top: 0;
   right: 0;
-  width: 77px;
-  height: 60px;
-  background-color: transparent;
+  z-index: 100;
+  width: 60px;
+  height: 54px;
   border: none;
+  background-color: transparent;
+
+  :hover {
+    + * {
+      border-bottom-left-radius: 40px;
+    }
+  }
+
+  :focus {
+    box-shadow: none;
+
+    + nav {
+      box-shadow: 0 0 7px ${({ theme }) => theme.colors.secondary};
+      box-shadow: 0 0 7px rgba(81, 203, 238, 1);
+    }
+  }
 
   ${respondTo.desktop(css`
     display: none;
-  `)};
-`;
-
-export const BurgerBackground = styled.span`
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.primary};
-
-  ::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-bottom: 25px solid #fff;
-    border-right: 30px solid transparent;
-  }
+  `)}
 `;
 
 export const BurgerLines = styled.span`
@@ -40,7 +38,8 @@ export const BurgerLines = styled.span`
   right: 8px;
   width: 40px;
   height: 3px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme, primary }) =>
+    primary ? theme.colors.primary : theme.colors.white};
   cursor: pointer;
 
   ::before,
@@ -54,7 +53,8 @@ export const BurgerLines = styled.span`
     width: 100%;
     height: 3px;
 
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme, primary }) =>
+      primary ? theme.colors.primary : theme.colors.white};
 
     transition: top 0.2s ease, transform 0.2s ease;
   }

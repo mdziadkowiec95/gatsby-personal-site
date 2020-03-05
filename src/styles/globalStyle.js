@@ -2,11 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
-  ${normalize}
+  /* ${normalize} */
 
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+    scroll-behavior: smooth;
   }
 
   * {
@@ -39,6 +40,28 @@ const GlobalStyle = createGlobalStyle`
 
   h3 {
     font-size: ${({ theme }) => theme.font.size.l}
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    font-size: 1.6rem;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button, 
+  input {
+    :focus {
+      outline: none;
+      box-shadow: 0 0 8px ${({ theme }) => theme.colors.secondary};
+      /* border: 2px dotted ${({ theme }) => theme.colors.secondary}; */
+    }
   }
 `;
 

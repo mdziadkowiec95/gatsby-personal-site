@@ -1,13 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as Styled from './styles';
 
-const Hamburger = () => {
+const Hamburger = ({ onClick, isOpen }) => {
   return (
-    <Styled.BurgerButton>
-      <Styled.BurgerBackground />
+    <Styled.BurgerButton onClick={onClick} isOpen={isOpen}>
       <Styled.BurgerLines />
     </Styled.BurgerButton>
   );
+};
+
+Hamburger.propTypes = {
+  isOpen: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
+Hamburger.defaultProps = {
+  isOpen: false,
+  onClick: null,
 };
 
 export default Hamburger;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Container from '../../components/Container/Container';
 import * as Styled from './styles';
+import HeroBox from '../../components/HeroBox/HeroBox';
 
 const getHeroPortraitImage = () => {
   const data = useStaticQuery(graphql`
@@ -28,16 +29,11 @@ const HeroTemplate = () => {
       <Styled.PortraitImg fluid={heroPortraitImgData} />
       <Container>
         <Styled.HeroInner>
-          <Styled.HeroBox>
-            <Styled.HeadingWrap>
-              <Styled.HeadingName>Hi, I&apos;m Michał.</Styled.HeadingName>
-              <br />
-              <Styled.HeadingRole>
-                <Styled.PurpleAccent>Front-end</Styled.PurpleAccent> Developer
-              </Styled.HeadingRole>
-            </Styled.HeadingWrap>
-          </Styled.HeroBox>
+          <HeroBox />
         </Styled.HeroInner>
+        <a href="#about">
+          <Styled.MouseIcon />
+        </a>
       </Container>
     </Styled.Wrapper>
   );
