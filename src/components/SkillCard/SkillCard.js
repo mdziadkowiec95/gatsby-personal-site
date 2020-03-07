@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as Styled from './styles';
-import HtmlIconSVG from '../../assets/images/icon-html.svg';
 
-const SkillCard = ({ name, minCardHeight }) => {
+const SkillCard = ({ name, progress, details, icon, minCardHeight }) => {
   const [isRotated, setIsRotated] = useState(false);
 
   return (
@@ -12,12 +11,26 @@ const SkillCard = ({ name, minCardHeight }) => {
       minCardHeight={minCardHeight}
     >
       <Styled.Front isRotated={isRotated}>
-        <p>{name}</p>
-        <HtmlIconSVG />
+        <Styled.Name>{name}</Styled.Name>
+        <img src={icon.file.url} alt={name} />
+        {/* How to handle Inline SVG from contentfull ??? */}
+
+        {/* <Styled.TechIcon
+          style={{ width: '150px' }}
+          svg={icon.svg}
+          file={icon.file}
+        /> */}
+        <Styled.Progress progress={progress} />
       </Styled.Front>
       <Styled.Back isRotated={isRotated}>
-        <p>{name} back</p>
-        <HtmlIconSVG />
+        <Styled.List>
+          {details.map(detail => (
+            <Styled.ListItem key={detail}>
+              <Styled.CheckIcon />
+              {detail}
+            </Styled.ListItem>
+          ))}
+        </Styled.List>
       </Styled.Back>
     </Styled.Wrapper>
   );
@@ -26,10 +39,19 @@ const SkillCard = ({ name, minCardHeight }) => {
 SkillCard.propTypes = {
   name: PropTypes.string.isRequired,
   minCardHeight: PropTypes.number,
+  progress: PropTypes.number,
+  details: PropTypes.arrayOf([PropTypes.string]),
+  icon: PropTypes.shape({
+    svg: PropTypes.object,
+    file: PropTypes.object.isRequired,
+  }),
 };
 
 SkillCard.defaultProps = {
   minCardHeight: 280,
+  progress: 0,
+  details: [],
+  icon: null,
 };
 
 export default SkillCard;

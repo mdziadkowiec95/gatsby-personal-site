@@ -1,32 +1,49 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
- * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+// Render inline SVG with fallback non-svg images
+const Image = ({ svg, fluid, file, alt }) => {
+  if (file.contentType === 'image/svg+xml') {
+    if (svg && svg.content) {
+      // Inlined SVGs
+      return (
+        <div
+          style={{ width: '150px' }}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: svg.content }}
+        />
+      );
     }
-  `);
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />;
+    // SVGs that can/should not be inlined
+    return <img src={file.url} alt={alt} />;
+  }
+
+  // Non SVG images
+  return <Img fluid={fluid} alt={alt} />;
+};
+
+Image.propTypes = {
+  svg: PropTypes.shape({
+    content: PropTypes.string,
+  }),
+  fluid: PropTypes.shape({
+    sizes: PropTypes.string,
+    src: PropTypes.string,
+    srcSet: PropTypes.string,
+  }),
+  file: PropTypes.shape({
+    url: PropTypes.string,
+    contentType: PropTypes.string,
+  }),
+  alt: PropTypes.string.isRequired,
+};
+
+Image.defaultProps = {
+  svg: null,
+  fluid: null,
+  file: null,
 };
 
 export default Image;

@@ -27,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.dark}
   }
 
+
+
   p {
     font-size: ${({ theme }) => theme.font.size.m};
     color: ${({ theme }) => theme.colors.dark100};
@@ -51,6 +53,10 @@ const GlobalStyle = createGlobalStyle`
 
   ul {
     list-style: none;
+  }
+
+  li {
+    font-size: ${({ theme }) => theme.font.size.m};
   }
 
   a {

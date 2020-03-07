@@ -92,6 +92,7 @@ module.exports = {
         },
       },
     },
+    `gatsby-transformer-inline-svg`,
     {
       resolve: `gatsby-source-contentful`,
       options: {

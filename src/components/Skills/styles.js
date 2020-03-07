@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { respondTo } from '../../styles/mixins';
 
 export const Wrapper = styled.div`
-  margin-top: 100px;
+  margin-top: 50px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 15px;
   box-shadow: 0px 3px 20px rgba(27, 4, 56, 0.2);
