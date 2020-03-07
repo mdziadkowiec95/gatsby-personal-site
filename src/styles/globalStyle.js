@@ -1,5 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { respondTo } from './mixins';
 
 const GlobalStyle = createGlobalStyle`
   /* ${normalize} */
@@ -13,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    color: ${({ theme }) => theme.colors.dark};
   }
   *,
   *::after,
@@ -36,7 +38,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    font-size: ${({ theme }) => theme.font.size.xl}
+    font-size: ${({ theme }) => theme.font.size.l};
+    
+    ${respondTo.desktop(css`
+      font-size: ${({ theme }) => theme.font.size.xl};
+    `)}
   }
 
   h3 {
