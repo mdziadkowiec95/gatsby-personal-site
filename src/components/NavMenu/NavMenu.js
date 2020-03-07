@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Styled from './styles';
+import SiteLogo from '../SiteLogo/SiteLogo';
 
 const routes = [
   {
@@ -16,6 +17,9 @@ const routes = [
 const NavMenu = ({ isOpen, isInitialized, setIsOpen }) => {
   return (
     <Styled.NavWrap isOpen={isOpen} isInitialized={isInitialized}>
+      <Styled.NavLogo isOpen={isOpen}>
+        <SiteLogo />
+      </Styled.NavLogo>
       <Styled.NavList isOpen={isOpen}>
         {routes.map(route => (
           <Styled.NavItem key={`route-${route.name}`}>

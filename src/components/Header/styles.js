@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { respondTo } from '../../styles/mixins';
 
 export const Wrapper = styled.header`
   position: fixed;
@@ -6,4 +7,8 @@ export const Wrapper = styled.header`
   left: 0;
   width: 100%;
   z-index: 10;
+
+  ${respondTo.desktop(css`
+    position: absolute;
+  `)}
 `;

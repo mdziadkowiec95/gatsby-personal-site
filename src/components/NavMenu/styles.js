@@ -63,6 +63,33 @@ export const NavWrap = styled.nav`
     `)}
 `;
 
+export const NavLogo = styled.div`
+  position: absolute;
+  width: 30px;
+  right: 50vw;
+  top: 20px;
+  z-index: 10;
+
+  ${({ isOpen }) =>
+    isOpen
+      ? css`
+          opacity: 1;
+          visibility: visible;
+        `
+      : css`
+          opacity: 0;
+          visibility: hidden;
+        `}
+
+  ${respondTo.desktop(css`
+    top: 30px;
+    left: 30px;
+    width: 60px;
+    opacity: 1;
+    visibility: visible;
+  `)}
+`;
+
 export const NavList = styled.ul`
   position: fixed;
   top: 100px;

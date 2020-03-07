@@ -27,7 +27,8 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     font-size: ${({ theme }) => theme.font.size.m};
-    color: ${({ theme }) => theme.colors.dark100}
+    color: ${({ theme }) => theme.colors.dark100};
+    line-height: 1.45;
   }
 
   h1 {

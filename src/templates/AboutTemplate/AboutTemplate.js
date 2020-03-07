@@ -1,22 +1,49 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
+import * as Styled from './styles';
 import Container from '../../components/Container/Container';
-import Button from '../../components/Button/Button';
+import SectionHeading from '../../components/SectionHeading/SectionHeading';
 
 const AboutTemplate = () => {
-  return (
-    <div id="about">
-      <Container>
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
+  const getAboutData = () => {
+    const data = useStaticQuery(graphql`
+      {
+        allContentfulHomeAbout(limit: 1) {
+          nodes {
+            image {
+              fluid(maxWidth: 590) {
+                ...GatsbyContentfulFluid_noBase64
+              }
+            }
+            description {
+              description
+            }
+          }
+        }
+      }
+    `);
+    return data.allContentfulHomeAbout.nodes[0];
+  };
+  const data = getAboutData();
 
-        <p>Some paragraph</p>
-        <Link to="/another-page">Another page</Link>
-        <Button secondary>Button test</Button>
+  return data ? (
+    <Styled.Wrapper id="about">
+      <Container>
+        <SectionHeading accent>
+          A few words <span>about me</span>
+        </SectionHeading>
+        <Styled.Inner>
+          <Styled.Description>
+            {data.description.description}
+          </Styled.Description>
+          <Styled.AboutImg
+            fluid={data.image.fluid}
+            imgStyle={{ height: 'auto' }}
+          />
+        </Styled.Inner>
       </Container>
-    </div>
-  );
+    </Styled.Wrapper>
+  ) : null;
 };
 
 export default AboutTemplate;
