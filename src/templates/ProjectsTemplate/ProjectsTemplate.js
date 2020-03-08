@@ -2,19 +2,19 @@ import React from 'react';
 import * as Styled from './styles';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import Container from '../../components/Container/Container';
-import Skills from '../../components/Skills/Skills';
+import Projects from '../../components/Projects/Projects';
 
-const SkillsTemplate = () => {
+const ProjectsTemplate = () => {
   return (
-    <Styled.Wrapper id="skills">
+    <Styled.Wrapper>
       <Container>
-        <SectionHeading reversed accent center>
-          Check my <span>skills</span>
-          <Skills />
+        <SectionHeading accent center>
+          My <span>Projects</span>
         </SectionHeading>
+        <Projects />
       </Container>
     </Styled.Wrapper>
   );
 };
 
-export default SkillsTemplate;
+export default ProjectsTemplate;

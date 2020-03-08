@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { respondTo } from '../../styles/mixins';
 
-export const BurgerButton = styled.button`
+export const BurgerButton = styled.a`
   position: fixed;
   top: 0;
   right: 0;
@@ -14,15 +14,6 @@ export const BurgerButton = styled.button`
   :hover {
     + * {
       border-bottom-left-radius: 40px;
-    }
-  }
-
-  :focus {
-    box-shadow: none;
-
-    + nav {
-      box-shadow: 0 0 7px ${({ theme }) => theme.colors.secondary};
-      box-shadow: 0 0 7px rgba(81, 203, 238, 1);
     }
   }
 

@@ -12,7 +12,9 @@ const HeroBox = () => {
           <Styled.PurpleAccent>Front-end</Styled.PurpleAccent> Developer
         </Styled.HeadingRole>
       </Styled.HeadingWrap>
-      <Button>Check my skills</Button>
+      <Button as="a" href="#skills">
+        Check my skills
+      </Button>
     </Styled.Wrapper>
   );
 };

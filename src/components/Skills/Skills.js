@@ -17,7 +17,6 @@ const Skills = () => {
               absolutePath
               content
               dataURI
-              originalContent
               relativePath
             }
             file {

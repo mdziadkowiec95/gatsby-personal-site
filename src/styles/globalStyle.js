@@ -71,9 +71,8 @@ const GlobalStyle = createGlobalStyle`
   button, 
   input {
     :focus {
-      outline: none;
-      box-shadow: 0 0 8px ${({ theme }) => theme.colors.secondary};
-      /* border: 2px dotted ${({ theme }) => theme.colors.secondary}; */
+      /* outline: none; */
+      /* box-shadow: 0 0 8px ${({ theme }) => theme.colors.secondary}; */
     }
   }
 `;

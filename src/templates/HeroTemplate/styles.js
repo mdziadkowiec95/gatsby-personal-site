@@ -46,7 +46,7 @@ export const PortraitImg = styled(Image)`
     z-index: -1;
     width: 35%;
     max-width: 340px;
-    filter: saturate(60%);
+    filter: saturate(80%);
   `)}
 
   ${respondTo.widescreen(css``)}

@@ -14,7 +14,7 @@ SectionHeading.propTypes = {
   accent: PropTypes.bool,
   reversed: PropTypes.bool,
   center: PropTypes.bool,
-  children: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 SectionHeading.defaultProps = {

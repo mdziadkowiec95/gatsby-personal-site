@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import IconCheckSVG from '../../assets/images/icon-check.svg';
-import Image from '../Image/Image';
 
 export const Side = styled.button`
   position: absolute;
@@ -19,6 +18,7 @@ export const Side = styled.button`
   transition: all 0.7s;
 
   :focus {
+    outline: none;
     box-shadow: 0 0 15px ${({ theme }) => theme.colors.secondary};
   }
 `;
@@ -42,16 +42,16 @@ export const Back = styled(Side)`
     `}
 `;
 
-export const TechIcon = styled(Image)`
-  width: 150px;
-  > svg {
-    fill: ${({ theme }) => theme.colors.primary};
-  }
+export const TechIcon = styled.img`
+  max-width: 140px;
+  margin-bottom: 20px;
 `;
 
 export const Name = styled.p`
   font-weight: ${({ theme }) => theme.font.weight.bold};
+  color: ${({ theme }) => theme.colors.dark};
 `;
+
 export const CheckIcon = styled(IconCheckSVG)`
   width: 20px;
   margin-right: 10px;
@@ -70,6 +70,8 @@ export const Wrapper = styled.div`
   width: 100%;
   min-height: ${({ minCardHeight }) =>
     minCardHeight ? `${minCardHeight}px` : '280px'};
+  max-width: 280px;
+  margin: 0 auto;
   backface-visibility: hidden;
   cursor: pointer;
 

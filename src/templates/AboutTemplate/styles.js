@@ -3,7 +3,7 @@ import Image from 'gatsby-image';
 import { respondTo } from '../../styles/mixins';
 
 export const Wrapper = styled.section`
-  padding: 100px 0;
+  padding: 130px 0 200px 0;
 `;
 
 export const Inner = styled.div`

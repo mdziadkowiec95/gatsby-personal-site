@@ -4,7 +4,7 @@ import * as Styled from './styles';
 
 const Hamburger = ({ onClick, isOpen }) => {
   return (
-    <Styled.BurgerButton onClick={onClick} isOpen={isOpen}>
+    <Styled.BurgerButton onClick={onClick} isOpen={isOpen} href="#">
       <Styled.BurgerLines />
     </Styled.BurgerButton>
   );

@@ -3,14 +3,18 @@ import { respondTo } from '../../styles/mixins';
 
 export const Wrapper = styled.div`
   margin-top: 50px;
-  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 15px;
-  box-shadow: 0px 3px 20px rgba(27, 4, 56, 0.2);
 
   ${respondTo.tablet(css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  `)}
+
+  ${respondTo.desktop(css`
+    padding: 30px 15px;
+    background-color: ${({ theme }) => theme.colors.white};
+    box-shadow: 0px 3px 20px rgba(27, 4, 56, 0.2);
   `)}
 `;
 

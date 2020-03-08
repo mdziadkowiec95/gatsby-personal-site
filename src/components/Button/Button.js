@@ -1,16 +1,34 @@
-import React from 'react';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import * as Styled from './styles';
 
-const Button = ({ secondary, children }) => {
-  return (
-    <Styled.ButtonWrap secondary={secondary}>{children}</Styled.ButtonWrap>
-  );
-};
+const Button = styled.button`
+  display: inline-block;
+  padding: 13px 25px;
+  font-size: ${({ theme }) => theme.font.size.s};
+  font-weight: ${({ theme }) => theme.font.weight.semibold};
+  border: 2px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 30px;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.secondary};
+  will-change: background-color, color;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
-Button.propTypes = {
-  children: PropTypes.string.isRequired,
-};
+  :hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.white};
+  }
+
+  :focus {
+    /* outline: none;
+    box-shadow: 0 0 8px ${({ theme }) => theme.colors.secondary}; */
+  }
+
+  ${({ secondary }) =>
+    secondary &&
+    css`
+      color: ${({ theme }) => theme.colors.white};
+    `}
+`;
 
 Button.propTypes = {
   secondary: PropTypes.bool,

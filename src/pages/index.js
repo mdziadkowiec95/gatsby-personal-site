@@ -5,6 +5,7 @@ import SEO from '../components/SEO/seo';
 import HeroTemplate from '../templates/HeroTemplate/HeroTemplate';
 import AboutTemplate from '../templates/AboutTemplate/AboutTemplate';
 import SkillsTemplate from '../templates/SkillsTemplate/SkillsTemplate';
+import ProjectsTemplate from '../templates/ProjectsTemplate/ProjectsTemplate';
 
 const IndexPage = () => (
   <LayoutTemplate>
@@ -12,6 +13,7 @@ const IndexPage = () => (
     <HeroTemplate />
     <AboutTemplate />
     <SkillsTemplate />
+    <ProjectsTemplate />
   </LayoutTemplate>
 );
 

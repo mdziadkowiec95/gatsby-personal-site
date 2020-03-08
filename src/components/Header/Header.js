@@ -7,7 +7,8 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  const handleNavOpen = () => {
+  const handleNavOpen = e => {
+    e.preventDefault();
     setIsOpen(!isOpen);
     if (!isInitialized) setIsInitialized(true);
   };
