@@ -12,14 +12,17 @@ export const Side = styled.button`
   border-radius: 15px;
   backface-visibility: hidden;
   background: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 0 5px rgba(36, 36, 36, 0.2);
+  /* box-shadow: 0 0 5px rgba(36, 36, 36, 0.2); */
   border: none;
   will-change: transform, box-shadow;
   transition: all 0.7s;
 
   :focus {
     outline: none;
-    box-shadow: 0 0 15px ${({ theme }) => theme.colors.secondary};
+    /* box-shadow: 0 0 15px ${({ theme }) => theme.colors.secondary}; */
+
+
+    /*  ADD FOCUS STATE ---- use the same shadow as on hover */
   }
 `;
 
@@ -32,7 +35,9 @@ export const Front = styled(Side)`
 `;
 
 export const Back = styled(Side)`
-  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transform: rotateY(180deg);
 
   ${({ isRotated }) =>
@@ -50,6 +55,10 @@ export const TechIcon = styled.img`
 export const Name = styled.p`
   font-weight: ${({ theme }) => theme.font.weight.bold};
   color: ${({ theme }) => theme.colors.dark};
+`;
+
+export const NameBack = styled(Name)`
+  margin-top: 30px;
 `;
 
 export const CheckIcon = styled(IconCheckSVG)`

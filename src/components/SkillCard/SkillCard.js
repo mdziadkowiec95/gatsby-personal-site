@@ -16,6 +16,7 @@ const SkillCard = ({ name, progress, details, icon, minCardHeight }) => {
         <Styled.Progress progress={progress} />
       </Styled.Front>
       <Styled.Back isRotated={isRotated}>
+        <Styled.NameBack>{name}</Styled.NameBack>
         <Styled.List>
           {details &&
             details.length > 0 &&
