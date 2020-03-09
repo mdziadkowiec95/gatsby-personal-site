@@ -19,10 +19,7 @@ export const Side = styled.button`
 
   :focus {
     outline: none;
-    /* box-shadow: 0 0 15px ${({ theme }) => theme.colors.secondary}; */
-
-
-    /*  ADD FOCUS STATE ---- use the same shadow as on hover */
+    box-shadow: 0 0 15px rgba(36, 36, 36, 0.2);
   }
 `;
 
@@ -86,14 +83,12 @@ export const Wrapper = styled.div`
 
   :hover {
     ${Side} {
-      :not(:focus) {
-        box-shadow: 0 0 15px rgba(36, 36, 36, 0.2);
-      }
+      box-shadow: 0 0 15px rgba(36, 36, 36, 0.2);
     }
   }
 `;
 
-const progressColor = (theme, progress) => {
+const getProgressColor = (theme, progress) => {
   const darkenValue = progress / 100 / 3;
   return `${darken(darkenValue, theme.colors.secondary)}`;
 };
@@ -115,7 +110,7 @@ export const Progress = styled.div`
     border-radius: inherit;
     background-color: ${({ theme }) => theme.colors.primary};
     background-image: ${({ theme, progress }) =>
-      `linear-gradient(to right, ${theme.colors.primary}, ${progressColor(
+      `linear-gradient(to right, ${theme.colors.primary}, ${getProgressColor(
         theme,
         progress
       )})`};
