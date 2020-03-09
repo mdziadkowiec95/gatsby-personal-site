@@ -50,7 +50,7 @@ SkillCard.propTypes = {
 };
 
 SkillCard.defaultProps = {
-  minCardHeight: 280,
+  minCardHeight: 250,
   progress: 0,
   details: [],
   icon: null,

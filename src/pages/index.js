@@ -6,6 +6,7 @@ import HeroTemplate from '../templates/HeroTemplate/HeroTemplate';
 import AboutTemplate from '../templates/AboutTemplate/AboutTemplate';
 import SkillsTemplate from '../templates/SkillsTemplate/SkillsTemplate';
 import ProjectsTemplate from '../templates/ProjectsTemplate/ProjectsTemplate';
+import ContactBox from '../components/ContactBox/ContactBox';
 
 const IndexPage = () => (
   <LayoutTemplate>
@@ -14,6 +15,7 @@ const IndexPage = () => (
     <AboutTemplate />
     <SkillsTemplate />
     <ProjectsTemplate />
+    <ContactBox />
   </LayoutTemplate>
 );
 

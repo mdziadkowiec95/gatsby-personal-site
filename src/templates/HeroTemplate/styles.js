@@ -18,7 +18,7 @@ export const Wrapper = styled.section`
       252deg,
       rgb(255, 255, 255),
       rgb(255, 255, 255) 60%,
-      ${({ theme }) => theme.colors.primary} 40%,
+      ${({ theme }) => theme.colors.secondary} 40%,
       ${({ theme }) => theme.colors.primary}
     );
   `)}
@@ -28,7 +28,7 @@ export const Wrapper = styled.section`
       292deg,
       rgb(255, 255, 255),
       rgb(255, 255, 255) 60%,
-      ${({ theme }) => theme.colors.primary} 40%,
+      ${({ theme }) => theme.colors.secondary} 40%,
       ${({ theme }) => theme.colors.primary}
     );
   `)}

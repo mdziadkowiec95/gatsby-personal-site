@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import theme from '../../styles/theme';
 import GlobalStyle from '../../styles/globalStyle';
 import useSiteMetadata from '../../hooks/useSiteMetadata';
+import Footer from '../../components/Footer/Footer';
 
 const LayoutTemplate = ({ children }) => {
   const { title } = useSiteMetadata();
@@ -14,6 +15,7 @@ const LayoutTemplate = ({ children }) => {
       <GlobalStyle />
       <Header siteTitle={title} />
       <main>{children}</main>
+      <Footer />
     </ThemeProvider>
   );
 };

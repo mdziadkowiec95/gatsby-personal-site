@@ -12,7 +12,6 @@ export const Side = styled.button`
   border-radius: 15px;
   backface-visibility: hidden;
   background: ${({ theme }) => theme.colors.white};
-  /* box-shadow: 0 0 5px rgba(36, 36, 36, 0.2); */
   border: none;
   will-change: transform, box-shadow;
   transition: all 0.7s;
@@ -45,7 +44,7 @@ export const Back = styled(Side)`
 `;
 
 export const TechIcon = styled.img`
-  max-width: 140px;
+  max-width: 80px;
   margin-bottom: 20px;
 `;
 
@@ -75,7 +74,7 @@ export const Wrapper = styled.div`
   background-color: transparent;
   width: 100%;
   min-height: ${({ minCardHeight }) =>
-    minCardHeight ? `${minCardHeight}px` : '280px'};
+    minCardHeight ? `${minCardHeight}px` : '250px'};
   max-width: 280px;
   margin: 0 auto;
   backface-visibility: hidden;

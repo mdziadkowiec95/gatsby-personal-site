@@ -11,6 +11,7 @@ const Button = styled.button`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.secondary};
   will-change: background-color, color;
+  white-space: nowrap;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
   :hover {

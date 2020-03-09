@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { darken, rgba } from 'polished';
 import { respondTo } from '../../styles/mixins';
+import GithubIconSVG from '../../assets/images/icons/github-rounded.svg';
+import Button from '../Button/Button';
 
 export const Label = styled.div`
   position: absolute;
@@ -21,10 +23,14 @@ export const Body = styled.div`
   perspective: 1000;
   position: relative;
   z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   text-align: center;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 40px 10px 30px 10px;
+  /* margin-bottom: 20px; */
   width: 100%;
+  height: 100%;
   border-radius: 15px;
   color: ${({ theme }) => theme.colors.white};
   opacity: 0;
@@ -45,13 +51,35 @@ export const Description = styled.p`
   font-size: ${({ theme }) => theme.font.size.s};
 `;
 
-export const Wrapper = styled.div`
+export const VisitButton = styled(Button)`
+  align-self: center;
+`;
+
+export const GithubLink = styled.a``;
+
+export const GithubIcon = styled(GithubIconSVG)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  fill: ${({ theme }) => theme.colors.white};
+  transition: fill 0.3s ease-in-out;
+
+  ${/* sc-selector */ GithubLink}:hover & {
+    fill: ${({ theme }) => theme.colors.secondary};
+  }
+`;
+
+const cardOverlayNoHover = theme =>
+  rgba(darken(0.05, theme.colors.tertiary), 0.45);
+
+export const Wrapper = styled.a`
   perspective: 1000;
   display: flex;
   align-items: flex-end;
   position: relative;
   margin: 20px auto;
-  width: 290px;
+  width: 330px;
   height: 210px;
   border-radius: 15px;
   overflow: hidden;
@@ -60,13 +88,15 @@ export const Wrapper = styled.div`
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-in-out;
 
   ${respondTo.tablet(css`
-    height: 250px;
-    width: 400px;
+    margin: 20px 5px;
+    width: 350px;
+    height: 220px;
   `)};
 
-  ${respondTo.tablet(css`
-    width: 400px;
-    height: 250px;
+  ${respondTo.desktop(css`
+    margin: 20px 10px;
+    width: 370px;
+    height: 235px;
   `)};
 
   ::before {
@@ -78,7 +108,7 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     background-color: ${({ theme }) =>
-      rgba(darken(0.2, theme.colors.tertiary), 0.75)};
+      rgba(darken(0.2, theme.colors.tertiary), 0.8)};
     border-radius: 15px;
     opacity: 0;
     will-change: opacity;
@@ -97,8 +127,17 @@ export const Wrapper = styled.div`
     height: 100%;
     background: no-repeat center / cover;
     border-radius: 15px;
-    background-image: ${({ image }) => image && `url(${image.fluid.src})`};
     transition: transform 0.3s ease;
+
+    ${({ theme, image }) =>
+      image &&
+      css`
+        background-image: linear-gradient(
+            ${`${cardOverlayNoHover(theme)}, 
+            ${cardOverlayNoHover(theme)}`}
+          ),
+          url(${image.fluid.src});
+      `};
   }
 
   :hover {

@@ -1,12 +1,13 @@
 import React from 'react';
+import * as Styled from './styles';
 
 const Footer = () => {
   return (
-    <footer>
+    <Styled.Wrapper>
       © {new Date().getFullYear()}, Built with
       {` `}
       <a href="https://www.gatsbyjs.org">Gatsby</a>
-    </footer>
+    </Styled.Wrapper>
   );
 };
 

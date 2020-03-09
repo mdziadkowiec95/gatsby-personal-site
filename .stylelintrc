@@ -5,6 +5,7 @@
         "stylelint-config-styled-components"
     ],
     "rules": {
-        "selector-type-no-unknown": [true, { ignoreTypes: ['$dummyValue'] }]
+       "property-no-unknown": [true, {"checkPrefixed": true, "ignoreProperties": ["/-styled-mixin/"]}],
     }
+    
 }

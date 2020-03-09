@@ -14,9 +14,15 @@ export const Wrapper = styled.section`
     height: 100%;
     z-index: -1;
     background-color: ${({ theme }) => theme.colors.primary};
-
+    /*  THIS gradient IS JUST AN IDEA */
+    background-image: linear-gradient(
+      #615ffa,
+      #7510f7 37%,
+      #615ffa 67%,
+      rgb(255, 255, 255)
+    );
     ${respondTo.desktop(css`
       height: 500px;
-    `)}
+    `)};
   }
 `;
