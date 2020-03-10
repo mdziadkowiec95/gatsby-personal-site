@@ -35,8 +35,4 @@ Button.propTypes = {
   secondary: PropTypes.bool,
 };
 
-Button.defaultProps = {
-  secondary: false,
-};
-
 export default Button;

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { respondTo } from '../../styles/mixins';
+import { respondTo, line } from '../../styles/mixins';
 import Button from '../Button/Button';
 
 export const Wrapper = styled.div`
@@ -11,6 +11,19 @@ export const Wrapper = styled.div`
   border-radius: 20px;
   box-shadow: 0px 3px 20px rgba(27, 4, 56, 0.2);
   max-width: 750px;
+  text-align: center;
+
+  ::before {
+    ${({ theme }) => line(theme.colors.tertiary, '3px', 'horizontal', '35%')};
+
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  ${respondTo.desktop(css`
+    text-align: left;
+  `)}
 `;
 
 export const ContentBox = styled.div`
@@ -19,6 +32,13 @@ export const ContentBox = styled.div`
   `)}
 `;
 
+export const Description = styled.p`
+  margin: 10px 0 20px 0;
+`;
+
 export const Cta = styled(Button)`
-  align-self: center;
+  ${respondTo.desktop(css`
+    align-self: center;
+    margin-left: 25px;
+  `)}
 `;

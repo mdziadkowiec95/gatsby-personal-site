@@ -21,6 +21,7 @@ export const Wrapper = styled.section`
       #615ffa 67%,
       rgb(255, 255, 255)
     );
+    
     ${respondTo.desktop(css`
       height: 500px;
     `)};

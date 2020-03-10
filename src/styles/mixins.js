@@ -12,3 +12,26 @@ export const respondTo = Object.keys(breakpoints).reduce(
   },
   {}
 );
+
+export const line = (
+  color = '#000',
+  size = '3px',
+  orientation = 'vertical',
+  length = '100%'
+) => css`
+  content: '';
+  position: absolute;
+  background-color: ${color};
+
+  ${orientation === 'horizontal' &&
+    css`
+      height: ${size};
+      width: ${length};
+    `}
+
+  ${orientation === 'vertical' &&
+    css`
+      width: ${size};
+      height: ${length};
+    `}
+`;

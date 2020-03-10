@@ -3,7 +3,13 @@ import { normalize } from 'styled-normalize';
 import { respondTo } from './mixins';
 
 const GlobalStyle = createGlobalStyle`
-  /* ${normalize} */
+  ${normalize}
+
+  body,
+  #gatsby-focus-wrapper,
+  #___gatsby {
+    min-height: 100vh;
+  }
 
   html {
     box-sizing: border-box;
@@ -26,8 +32,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.font.family.primary};
     color: ${({ theme }) => theme.colors.dark}
   }
-
-
 
   p {
     font-size: ${({ theme }) => theme.font.size.m};

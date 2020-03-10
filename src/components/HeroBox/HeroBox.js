@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './styles';
-import Button from '../Button/Button';
 
 const HeroBox = () => {
   return (
@@ -12,9 +11,9 @@ const HeroBox = () => {
           <Styled.PurpleAccent>Front-end</Styled.PurpleAccent> Developer
         </Styled.HeadingRole>
       </Styled.HeadingWrap>
-      <Button as="a" href="#skills">
+      <Styled.SkillsBtn as="a" href="#skills">
         Check my skills
-      </Button>
+      </Styled.SkillsBtn>
     </Styled.Wrapper>
   );
 };

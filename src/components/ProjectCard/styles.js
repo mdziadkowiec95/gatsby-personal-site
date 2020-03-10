@@ -48,7 +48,11 @@ export const Name = styled.h4`
 export const Description = styled.p`
   margin: 10px 0 30px 0;
   color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.font.size.s};
+  font-size: ${({ theme }) => theme.font.size.xs};
+
+  ${respondTo.tablet(css`
+    font-size: ${({ theme }) => theme.font.size.s};
+  `)}
 `;
 
 export const VisitButton = styled(Button)`
@@ -73,7 +77,7 @@ export const GithubIcon = styled(GithubIconSVG)`
 const cardOverlayNoHover = theme =>
   rgba(darken(0.05, theme.colors.tertiary), 0.45);
 
-export const Wrapper = styled.a`
+export const Wrapper = styled.div`
   perspective: 1000;
   display: flex;
   align-items: flex-end;

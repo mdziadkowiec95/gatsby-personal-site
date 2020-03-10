@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
-  padding: 20px;
+  /* padding: 20px; */
   background-color: unset;
   z-index: 0;
 
