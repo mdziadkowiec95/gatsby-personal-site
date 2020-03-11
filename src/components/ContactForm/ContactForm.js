@@ -3,14 +3,13 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import * as Styled from './styles';
 import TextField from '../TextField/TextField';
-import Button from '../Button/Button';
 import ReCaptcha from '../ReCaptcha/ReCaptcha';
 
 const ContactForm = () => {
   const form = useFormik({
     initialValues: {
       name: '',
-      subject: '',
+      email: '',
       message: '',
       captchaToken: '',
     },
@@ -18,9 +17,9 @@ const ContactForm = () => {
       name: Yup.string()
         .max(25, 'Name can be no longer than 25 characters')
         .required('Name is required'),
-      subject: Yup.string()
-        .max(20, 'Subject can be at most 50 characters long')
-        .required('Message is required'),
+      email: Yup.string()
+        .email('You need to provide valid email')
+        .required('Email is required'),
       message: Yup.string()
         .min(
           6,
@@ -28,20 +27,29 @@ const ContactForm = () => {
         )
         .max(250, 'Message can be at most 250 characters length')
         .required('Message is required'),
-      captchaToken: Yup.string().required(`Are you sure you are not a robot?`),
     }),
     onSubmit: values => {
-      form.validateField('captchaToken');
-      alert(JSON.stringify(values, null, 2));
+      console.log('Before submiting');
+      fetch('/.netlify/functions/send-contact-email/send-contact-email', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          message: values.message,
+          captchaToken: values.captchaToken,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
-  // useEffect(() => {
-  //   fetch('/api-lambda/send-contact-email/send-contact-email')
-  //     .then(res => res.text())
-  //     .then(data => console.log(data))
-  //     .catch(err => console.log(err));
-  // }, []);
+  useEffect(() => {}, []);
 
   return (
     <form onSubmit={form.handleSubmit}>
@@ -55,13 +63,14 @@ const ContactForm = () => {
         touched={form.touched.name}
       />
       <TextField
-        name="subject"
-        value={form.values.subject}
-        placeholder="What is the subject?"
+        name="email"
+        type="email"
+        value={form.values.email}
+        placeholder="Your email"
         onChange={form.handleChange}
         onBlur={form.handleBlur}
-        error={form.errors.subject}
-        touched={form.touched.subject}
+        error={form.errors.email}
+        touched={form.touched.email}
       />
       <TextField
         isTextarea

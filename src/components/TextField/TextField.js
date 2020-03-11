@@ -5,6 +5,7 @@ import * as Styled from './styles';
 const TextField = ({
   value,
   name,
+  type,
   onChange,
   onBlur,
   placeholder,
@@ -14,7 +15,7 @@ const TextField = ({
 }) => (
   <Styled.Wrapper>
     <Styled.Field
-      type="text"
+      type={type}
       name={name}
       value={value}
       placeholder=" "
@@ -32,6 +33,7 @@ TextField.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['text', 'email']),
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   isTextarea: PropTypes.bool,
@@ -42,6 +44,7 @@ TextField.propTypes = {
 TextField.defaultProps = {
   value: '',
   placeholder: 'Enter some text',
+  type: 'text',
   isTextarea: false,
   error: null,
   touched: false,
