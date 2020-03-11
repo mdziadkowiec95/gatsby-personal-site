@@ -6,6 +6,8 @@ const theme = {
     dark: '#43484D',
     dark100: '#707070',
     white: '#fff',
+    success: '#49c949',
+    danger: '#e44c4c',
   },
   font: {
     weight: {
