@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledReCaptcha = styled(ReCAPTCHA)`
   &,
@@ -25,6 +26,10 @@ const ReCaptcha = ({ onChange }) => {
       onChange={handleOnChange}
     />
   );
+};
+
+ReCaptcha.propTypes = {
+  onChange: PropTypes.func.isRequired,
 };
 
 export default ReCaptcha;

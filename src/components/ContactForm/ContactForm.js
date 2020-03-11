@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import * as Styled from './styles';
@@ -6,6 +6,7 @@ import TextField from '../TextField/TextField';
 import ReCaptcha from '../ReCaptcha/ReCaptcha';
 
 const ContactForm = () => {
+  const [captchaError, setCaptchaError] = useState(false);
   const form = useFormik({
     initialValues: {
       name: '',
@@ -29,27 +30,30 @@ const ContactForm = () => {
         .required('Message is required'),
     }),
     onSubmit: values => {
-      console.log('Before submiting');
-      fetch('/.netlify/functions/send-contact-email/send-contact-email', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          message: values.message,
-          captchaToken: values.captchaToken,
-        }),
-      })
+      if (!values.captchaToken) {
+        return setCaptchaError(true);
+      }
+
+      return fetch(
+        '/.netlify/functions/send-contact-email/send-contact-email',
+        {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: values.name,
+            email: values.email,
+            message: values.message,
+            captchaToken: values.captchaToken,
+          }),
+        }
+      )
         .then(res => res.json())
         .then(data => console.log(data))
         .catch(err => console.log(err));
-      // alert(JSON.stringify(values, null, 2));
     },
   });
-
-  useEffect(() => {}, []);
 
   return (
     <form onSubmit={form.handleSubmit}>
@@ -85,12 +89,19 @@ const ContactForm = () => {
       <Styled.ActionBox>
         <div>
           <ReCaptcha
-            onChange={token => form.setFieldValue('captchaToken', token)}
+            onChange={token => {
+              form.setFieldValue('captchaToken', token);
+              if (token) {
+                setCaptchaError(false);
+              } else {
+                setCaptchaError(true);
+              }
+            }}
           />
         </div>
         <Styled.SubmitBtn type="submit">Send a message</Styled.SubmitBtn>
       </Styled.ActionBox>
-      {form.errors.captchaToken && (
+      {captchaError && (
         <Styled.CaptchaErr>Are you sure you are not a robot?</Styled.CaptchaErr>
       )}
     </form>
