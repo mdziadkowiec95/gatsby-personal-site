@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from 'styled-components';
-import { Link } from 'gatsby';
 import { respondTo } from '../../styles/mixins';
 
 const showNavAniamtion = keyframes`
@@ -117,7 +116,7 @@ export const NavItem = styled.li`
   margin-bottom: 10px;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.a`
   padding: 5px 10px;
   font-size: ${({ theme }) => theme.font.size.l};
   color: ${({ theme }) => theme.colors.white};

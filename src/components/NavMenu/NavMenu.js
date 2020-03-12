@@ -5,12 +5,20 @@ import SiteLogo from '../SiteLogo/SiteLogo';
 
 const routes = [
   {
-    name: 'Home',
-    href: '/',
+    name: 'About',
+    href: '#about',
+  },
+  {
+    name: 'Skills',
+    href: '#skills',
+  },
+  {
+    name: 'Projects',
+    href: '#projects',
   },
   {
     name: 'Contact',
-    href: '/contact',
+    href: '#contact',
   },
 ];
 
@@ -23,11 +31,7 @@ const NavMenu = ({ isOpen, isInitialized, setIsOpen }) => {
       <Styled.NavList isOpen={isOpen}>
         {routes.map(route => (
           <Styled.NavItem key={`route-${route.name}`}>
-            <Styled.NavLink
-              to={route.href}
-              activeClassName="active"
-              onClick={() => setIsOpen(false)}
-            >
+            <Styled.NavLink href={route.href} onClick={() => setIsOpen(false)}>
               {route.name}
             </Styled.NavLink>
           </Styled.NavItem>

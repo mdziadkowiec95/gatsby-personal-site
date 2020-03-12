@@ -89,6 +89,7 @@ const ContactForm = () => {
       <Styled.ActionBox>
         <div>
           <ReCaptcha
+            isError={captchaError}
             onChange={token => {
               form.setFieldValue('captchaToken', token);
               if (token) {

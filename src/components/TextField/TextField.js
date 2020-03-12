@@ -38,7 +38,7 @@ TextField.propTypes = {
   onBlur: PropTypes.func.isRequired,
   isTextarea: PropTypes.bool,
   error: PropTypes.string,
-  touched: PropTypes.string,
+  touched: PropTypes.bool,
 };
 
 TextField.defaultProps = {

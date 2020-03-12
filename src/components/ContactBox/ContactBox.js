@@ -5,7 +5,7 @@ import ContactForm from '../ContactForm/ContactForm';
 
 const ContactBox = () => {
   return (
-    <Container>
+    <Container id="contact">
       <Styled.Wrapper>
         <h3>Get in touch</h3>
         <Styled.ContentBox>
