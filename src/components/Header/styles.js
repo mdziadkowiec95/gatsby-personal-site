@@ -11,7 +11,7 @@ export const Wrapper = styled.header`
   ${respondTo.desktop(css`
     position: fixed;
     transform: translateY(-150px);
-    transition: transform .3s ease-in-out;
+    transition: background-color .3s ease-in-out, transform .3s ease-in-out;
 
     ${({ isFixed }) => isFixed && css`
       transform: translateY(0);
