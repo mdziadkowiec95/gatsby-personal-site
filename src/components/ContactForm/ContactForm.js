@@ -16,7 +16,7 @@ const ContactForm = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .max(25, 'Name can be no longer than 25 characters')
+        .max(50, 'Name can be no longer than 50 characters')
         .required('Name is required'),
       email: Yup.string()
         .email('You need to provide valid email')
@@ -26,7 +26,7 @@ const ContactForm = () => {
           6,
           'Message should be longer than 6 and shorter than 250 characters'
         )
-        .max(250, 'Message can be at most 250 characters length')
+        .max(250, 'Message can be at most 250 characters long')
         .required('Message is required'),
     }),
     onSubmit: values => {

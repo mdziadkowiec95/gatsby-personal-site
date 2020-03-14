@@ -36,13 +36,14 @@ const ReCaptcha = ({ isError, onChange }) => {
     onChange(token);
   };
 
+
   return (
     <StyledWrapper isError={isError}>
       <StyledReCaptcha
         ref={recaptchaRef}
         size="compact"
         hl="en"
-        sitekey={process.env.RECAPTCHA_SITE_KEY}
+        sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
         onChange={handleOnChange}
       />
     </StyledWrapper>

@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // const { createProxyMiddleware } = require('http-proxy-middleware');
 
+// require('dotenv').config();
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });

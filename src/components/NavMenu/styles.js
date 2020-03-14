@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
+import Scrollspy from 'react-scrollspy'
 import { respondTo } from '../../styles/mixins';
 
 const showNavAniamtion = keyframes`
@@ -27,6 +28,7 @@ const hideNavAnimation = keyframes`
 
 export const NavWrap = styled.nav`
   position: fixed;
+  z-index: 1000;
   top: 0;
   right: 0;
   width: 60px;
@@ -89,7 +91,7 @@ export const NavLogo = styled.div`
   `)}
 `;
 
-export const NavList = styled.ul`
+export const NavList = styled(Scrollspy)`
   position: fixed;
   top: 100px;
   right: 0;
@@ -114,12 +116,54 @@ export const NavList = styled.ul`
 
 export const NavItem = styled.li`
   margin-bottom: 10px;
+
+  ${respondTo.desktop(css`
+    margin-bottom: 0;
+  `)}
 `;
 
 export const NavLink = styled.a`
+  position: relative;
   padding: 5px 10px;
   font-size: ${({ theme }) => theme.font.size.l};
   color: ${({ theme }) => theme.colors.white};
+
+  ::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-right: -6px;
+    top: 12px;
+    left: -16px;
+    opacity: 0;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid ${({ theme }) => theme.colors.white};
+  
+    ${respondTo.desktop(css`
+      top: 6px;
+      left: -12px;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 7px solid ${({ theme }) => theme.colors.secondary};
+    `)}
+  }
+
+  :hover,
+  ${/* sc-selector */ NavItem}.isCurrent & {
+    opacity: 1;
+
+    &::before {
+      transform: translateX(7px);
+      opacity: 1;
+    }
+  }
+  
+
+
 
   ${respondTo.desktop(css`
     font-size: ${({ theme }) => theme.font.size.s};

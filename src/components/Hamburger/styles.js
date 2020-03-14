@@ -5,7 +5,7 @@ export const BurgerButton = styled.a`
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 100;
+  z-index: 2000;
   width: 60px;
   height: 54px;
   border: none;

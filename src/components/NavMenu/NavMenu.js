@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import * as Styled from './styles';
 import SiteLogo from '../SiteLogo/SiteLogo';
 
-const routes = [
+const sections = [
   {
     name: 'About',
-    href: '#about',
+    id: 'about',
   },
   {
     name: 'Skills',
-    href: '#skills',
+    id: 'skills',
   },
   {
     name: 'Projects',
-    href: '#projects',
+    id: 'projects',
   },
   {
     name: 'Contact',
-    href: '#contact',
+    id: 'contact',
   },
 ];
 
@@ -28,11 +28,11 @@ const NavMenu = ({ isOpen, isInitialized, setIsOpen }) => {
       <Styled.NavLogo isOpen={isOpen}>
         <SiteLogo />
       </Styled.NavLogo>
-      <Styled.NavList isOpen={isOpen}>
-        {routes.map(route => (
-          <Styled.NavItem key={`route-${route.name}`}>
-            <Styled.NavLink href={route.href} onClick={() => setIsOpen(false)}>
-              {route.name}
+      <Styled.NavList isOpen={isOpen} items={sections.map(s => s.id)} currentClassName="isCurrent">
+        {sections.map(section => (
+          <Styled.NavItem key={`section-${section.name}`}>
+            <Styled.NavLink href={`#${section.id}`} onClick={() => setIsOpen(false)}>
+              {section.name}
             </Styled.NavLink>
           </Styled.NavItem>
         ))}
