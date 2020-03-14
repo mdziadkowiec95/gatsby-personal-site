@@ -22,10 +22,10 @@ const sections = [
   },
 ];
 
-const NavMenu = ({ isOpen, isInitialized, setIsOpen }) => {
+const NavMenu = ({ isOpen, isInitialized, setIsOpen, hasBackground }) => {
   return (
-    <Styled.NavWrap isOpen={isOpen} isInitialized={isInitialized}>
-      <Styled.NavLogo isOpen={isOpen}>
+    <Styled.NavWrap isOpen={isOpen} isInitialized={isInitialized} hasBackground={hasBackground}>
+      <Styled.NavLogo isOpen={isOpen}  hasBackground={hasBackground}>
         <SiteLogo />
       </Styled.NavLogo>
       <Styled.NavList isOpen={isOpen} items={sections.map(s => s.id)} currentClassName="isCurrent">
@@ -45,11 +45,13 @@ NavMenu.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func.isRequired,
   isInitialized: PropTypes.bool,
+  hasBackground: PropTypes.bool,
 };
 
 NavMenu.defaultProps = {
   isOpen: false,
   isInitialized: false,
+  hasBackground: false,
 };
 
 export default NavMenu;

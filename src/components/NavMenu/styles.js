@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
+import { rgba } from 'polished';
 import Scrollspy from 'react-scrollspy'
 import { respondTo } from '../../styles/mixins';
 
@@ -60,7 +61,13 @@ export const NavWrap = styled.nav`
       width: auto;
       height: auto;
       opacity: 1;
-      margin: 40px 50px 0 0;
+      border-radius: 0;
+      padding: 30px 40px 30px 0;
+      transition: box-shadow .3s ease-in-out;
+      
+      ${({ hasBackground }) => hasBackground &&  css`
+        box-shadow: 0 2px 5px ${({ theme }) => rgba(theme.colors.dark, 0.2)};
+      `}
     `)}
 `;
 
@@ -69,6 +76,9 @@ export const NavLogo = styled.div`
   width: 30px;
   right: 50vw;
   top: 20px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: ${({ theme }) => theme.colors.primary};
   z-index: 10;
 
   ${({ isOpen }) =>
@@ -83,9 +93,9 @@ export const NavLogo = styled.div`
         `}
 
   ${respondTo.desktop(css`
-    top: 30px;
+    top: 16px;
     left: 30px;
-    width: 60px;
+    width: 49px;
     opacity: 1;
     visibility: visible;
   `)}

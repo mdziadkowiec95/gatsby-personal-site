@@ -9,6 +9,15 @@ export const Wrapper = styled.header`
   z-index: 10;
 
   ${respondTo.desktop(css`
-    position: absolute;
+    position: fixed;
+    transform: translateY(-150px);
+    transition: transform .3s ease-in-out;
+
+    ${({ isFixed }) => isFixed && css`
+      transform: translateY(0);
+    `}
+    ${({ hasBackground }) => hasBackground && css`
+      background-color: ${({ theme }) => theme.colors.white};
+    `}
   `)}
 `;
