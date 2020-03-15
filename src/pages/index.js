@@ -10,7 +10,7 @@ import ContactBox from '../components/ContactBox/ContactBox';
 
 const IndexPage = () => (
   <LayoutTemplate>
-    <SEO title="Home" />
+    <SEO title="Michał Dziadkowiec" />
     <HeroTemplate />
     <AboutTemplate />
     <SkillsTemplate />

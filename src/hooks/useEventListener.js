@@ -2,10 +2,14 @@ import { useEffect } from "react";
 
 const useEventListener = (event, callback) => {
     useEffect(() => {
-        document.addEventListener(event, callback);
+      if (typeof window !== 'undefined') {
+        window.addEventListener(event, callback);
+      }
         
         return function cleanup() {
-          document.removeEventListener(event, callback);
+          if (typeof window !== 'undefined') {
+            window.removeEventListener(event, callback);
+          }
         }
       }, [callback])
 }

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useThrottledFn } from 'beautiful-react-hooks'; 
-import PropTypes from 'prop-types'
 import useEventListener from './useEventListener';
 
 /**
@@ -9,6 +8,8 @@ import useEventListener from './useEventListener';
  */
 
 const useScrollDirection = (initialDirection) => {
+    if (typeof window === 'undefined') return [];
+
     const [lastScrollPos, setLastScrollPos] = useState(0);
     const [direction, setDirection] = useState(initialDirection);
 
@@ -24,10 +25,6 @@ const useScrollDirection = (initialDirection) => {
     useEventListener('scroll', hadndleDirectionChange);
   
     return [direction, window.pageYOffset];
-  }
-
-  useScrollDirection.propTypes = {
-    initialDirection: PropTypes.oneOf(['asf','asf'])
-  }
+}
 
   export default useScrollDirection;

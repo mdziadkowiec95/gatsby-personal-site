@@ -9,7 +9,6 @@ import useScrollDirection from '../../hooks/useScrollDirection';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
-
   const [scrollDirection, pageYOffset] = useScrollDirection('up');
 
   const handleNavOpen = e => {
@@ -21,7 +20,6 @@ const Header = () => {
   const hasBackgroundCondition  = pageYOffset > 200;
   return (
     <Styled.Wrapper isFixed={scrollDirection === 'up'} hasBackground={hasBackgroundCondition}>
-      {console.log(scrollDirection)}
         <Hamburger onClick={handleNavOpen} />
         <NavMenu
           isOpen={isOpen}

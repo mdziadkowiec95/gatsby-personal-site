@@ -1,12 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // const { createProxyMiddleware } = require('http-proxy-middleware');
 
-// require('dotenv').config();
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-console.log(process.env.NODE_ENV)
-console.log(process.env)
+
 
 module.exports = {
   // for avoiding CORS while developing Netlify Functions locally
@@ -23,7 +21,7 @@ module.exports = {
   //   );
   // },
   siteMetadata: {
-    title: `Michał Dziadkowiec - Front-End Developer`,
+    title: `Front-End Developer`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@m_dzi95`,
   },
