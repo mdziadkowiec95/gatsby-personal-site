@@ -29,18 +29,15 @@ const StyledReCaptcha = styled(ReCAPTCHA)`
   }
 `;
 
-const ReCaptcha = ({ isError, onChange }) => {
-  const recaptchaRef = useRef(null);
-
+const ReCaptcha = React.forwardRef(({ isError, onChange }, ref) => {
   const handleOnChange = token => {
     onChange(token);
   };
 
-
   return (
     <StyledWrapper isError={isError}>
       <StyledReCaptcha
-        ref={recaptchaRef}
+        ref={ref}
         size="compact"
         hl="en"
         sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
@@ -48,7 +45,9 @@ const ReCaptcha = ({ isError, onChange }) => {
       />
     </StyledWrapper>
   );
-};
+});
+
+ReCaptcha.displayName = 'ReCaptcha';
 
 ReCaptcha.propTypes = {
   isError: PropTypes.bool,

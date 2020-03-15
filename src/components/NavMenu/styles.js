@@ -134,6 +134,8 @@ export const NavItem = styled.li`
 
 export const NavLink = styled.a`
   position: relative;
+  display: inline-block;
+  width: 100%;
   padding: 5px 10px;
   font-size: ${({ theme }) => theme.font.size.l};
   color: ${({ theme }) => theme.colors.white};
@@ -146,7 +148,7 @@ export const NavLink = styled.a`
     height: 0;
     margin-right: -6px;
     top: 12px;
-    left: -16px;
+    left: -20px;
     opacity: 0;
     transition: transform .3s ease-in-out, opacity .3s ease-in-out;
     border-top: 10px solid transparent;
@@ -154,8 +156,8 @@ export const NavLink = styled.a`
     border-left: 10px solid ${({ theme }) => theme.colors.white};
   
     ${respondTo.desktop(css`
-      top: 6px;
-      left: -12px;
+      top: 7px;
+      left: -7px;
       border-top: 7px solid transparent;
       border-bottom: 7px solid transparent;
       border-left: 7px solid ${({ theme }) => theme.colors.secondary};
@@ -167,13 +169,20 @@ export const NavLink = styled.a`
     opacity: 1;
 
     &::before {
-      transform: translateX(7px);
+      transform: translateX(5px);
       opacity: 1;
     }
   }
+
+  ${/* sc-selector */ NavItem}.isCurrent & {
+    color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme }) => theme.colors.white};
+
+    ${respondTo.desktop(css`
+      background-color: transparent;
+    `)}
+  }
   
-
-
 
   ${respondTo.desktop(css`
     font-size: ${({ theme }) => theme.font.size.s};

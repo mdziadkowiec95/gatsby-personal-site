@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import * as Styled from './styles';
@@ -7,6 +7,10 @@ import ReCaptcha from '../ReCaptcha/ReCaptcha';
 
 const ContactForm = () => {
   const [captchaError, setCaptchaError] = useState(false);
+  const [serverResponse, setServerResponse] = useState(null);
+
+  const captchaRef = useRef(null)
+
   const form = useFormik({
     initialValues: {
       name: '',
@@ -50,8 +54,20 @@ const ContactForm = () => {
         }
       )
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+        .then(data => {
+            if (data.success) {
+              setServerResponse(data);
+              form.resetForm();
+              setCaptchaError(false);
+              captchaRef.current.reset();
+            } else {
+              setServerResponse(data);
+            }
+        })
+        .catch(err => {
+          // eslint-disable-next-line no-console
+          console.error(err);
+        });
     },
   });
 
@@ -98,10 +114,12 @@ const ContactForm = () => {
                 setCaptchaError(true);
               }
             }}
+            ref={captchaRef}
           />
         </div>
         <Styled.SubmitBtn type="submit">Send a message</Styled.SubmitBtn>
       </Styled.ActionBox>
+          {serverResponse && <Styled.EmailSentText isSuccess={serverResponse.success}>{serverResponse.success ? 'Message has been sent, thank you!' : `I'm sorry, unexpected error occured...`}</Styled.EmailSentText>}
       {captchaError && (
         <Styled.CaptchaErr>Are you sure you are not a robot?</Styled.CaptchaErr>
       )}

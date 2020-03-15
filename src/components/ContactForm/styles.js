@@ -26,3 +26,7 @@ export const CaptchaErr = styled.p`
   color: ${({ theme }) => theme.colors.danger};
   font-size: ${({ theme }) => theme.font.size.xs};
 `;
+
+export const EmailSentText = styled.p`
+  color: ${({ theme, isSuccess }) => isSuccess ? theme.colors.success : theme.colors.danger };
+`

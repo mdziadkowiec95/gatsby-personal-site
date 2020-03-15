@@ -62,7 +62,10 @@ export const CheckIcon = styled(IconCheckSVG)`
   margin-right: 10px;
   fill: ${({ theme }) => theme.colors.secondary};
 `;
-export const List = styled.ul``;
+export const List = styled.ul`
+  margin-top: 5px;
+`;
+
 export const ListItem = styled.li`
   display: flex;
   align-items: center;
