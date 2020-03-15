@@ -3,32 +3,36 @@ import PropTypes from 'prop-types';
 import * as Styled from './styles';
 import SiteLogo from '../SiteLogo/SiteLogo';
 
-const routes = [
+const sections = [
   {
-    name: 'Home',
-    href: '/',
+    name: 'About',
+    id: 'about',
+  },
+  {
+    name: 'Skills',
+    id: 'skills',
+  },
+  {
+    name: 'Projects',
+    id: 'projects',
   },
   {
     name: 'Contact',
-    href: '/contact',
+    id: 'contact',
   },
 ];
 
-const NavMenu = ({ isOpen, isInitialized, setIsOpen }) => {
+const NavMenu = ({ isOpen, isInitialized, setIsOpen, hasBackground }) => {
   return (
-    <Styled.NavWrap isOpen={isOpen} isInitialized={isInitialized}>
-      <Styled.NavLogo isOpen={isOpen}>
+    <Styled.NavWrap isOpen={isOpen} isInitialized={isInitialized} hasBackground={hasBackground}>
+      <Styled.NavLogo isOpen={isOpen}  hasBackground={hasBackground}>
         <SiteLogo />
       </Styled.NavLogo>
-      <Styled.NavList isOpen={isOpen}>
-        {routes.map(route => (
-          <Styled.NavItem key={`route-${route.name}`}>
-            <Styled.NavLink
-              to={route.href}
-              activeClassName="active"
-              onClick={() => setIsOpen(false)}
-            >
-              {route.name}
+      <Styled.NavList isOpen={isOpen} items={sections.map(s => s.id)} currentClassName="isCurrent">
+        {sections.map(section => (
+          <Styled.NavItem key={`section-${section.name}`}>
+            <Styled.NavLink href={`#${section.id}`} onClick={() => setIsOpen(false)}>
+              {section.name}
             </Styled.NavLink>
           </Styled.NavItem>
         ))}
@@ -41,11 +45,13 @@ NavMenu.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func.isRequired,
   isInitialized: PropTypes.bool,
+  hasBackground: PropTypes.bool,
 };
 
 NavMenu.defaultProps = {
   isOpen: false,
   isInitialized: false,
+  hasBackground: false,
 };
 
 export default NavMenu;

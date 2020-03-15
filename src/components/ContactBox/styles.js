@@ -4,7 +4,6 @@ import Button from '../Button/Button';
 
 export const Wrapper = styled.div`
   position: relative;
-  z-index: 10;
   padding: 40px;
   margin: 0 auto -100px auto;
   background-color: ${({ theme }) => theme.colors.white};

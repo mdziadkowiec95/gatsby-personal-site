@@ -6,7 +6,7 @@ import Projects from '../../components/Projects/Projects';
 
 const ProjectsTemplate = () => {
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper id="projects">
       <Container>
         <SectionHeading accent center>
           My <span>Projects</span>

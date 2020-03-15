@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Container from '../../components/Container/Container';
 import * as Styled from './styles';
 import HeroBox from '../../components/HeroBox/HeroBox';
+import SocialBar from '../../components/SocialBar/SocialBar';
 
 const HeroTemplate = () => {
   const getHeroPortraitImageSrc = () => {
@@ -33,6 +34,7 @@ const HeroTemplate = () => {
           <Styled.MouseIcon />
         </a>
       </Container>
+      <SocialBar />
     </Styled.Wrapper>
   );
 };

@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
-import { Link } from 'gatsby';
+import { rgba } from 'polished';
+import Scrollspy from 'react-scrollspy'
 import { respondTo } from '../../styles/mixins';
 
 const showNavAniamtion = keyframes`
@@ -28,6 +29,7 @@ const hideNavAnimation = keyframes`
 
 export const NavWrap = styled.nav`
   position: fixed;
+  z-index: 1000;
   top: 0;
   right: 0;
   width: 60px;
@@ -59,7 +61,13 @@ export const NavWrap = styled.nav`
       width: auto;
       height: auto;
       opacity: 1;
-      margin: 40px 50px 0 0;
+      border-radius: 0;
+      padding: 30px 40px 30px 0;
+      transition: box-shadow .3s ease-in-out;
+      
+      ${({ hasBackground }) => hasBackground &&  css`
+        box-shadow: 0 2px 5px ${({ theme }) => rgba(theme.colors.dark, 0.2)};
+      `}
     `)}
 `;
 
@@ -68,6 +76,9 @@ export const NavLogo = styled.div`
   width: 30px;
   right: 50vw;
   top: 20px;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: ${({ theme }) => theme.colors.primary};
   z-index: 10;
 
   ${({ isOpen }) =>
@@ -82,15 +93,15 @@ export const NavLogo = styled.div`
         `}
 
   ${respondTo.desktop(css`
-    top: 30px;
+    top: 16px;
     left: 30px;
-    width: 60px;
+    width: 49px;
     opacity: 1;
     visibility: visible;
   `)}
 `;
 
-export const NavList = styled.ul`
+export const NavList = styled(Scrollspy)`
   position: fixed;
   top: 100px;
   right: 0;
@@ -115,12 +126,63 @@ export const NavList = styled.ul`
 
 export const NavItem = styled.li`
   margin-bottom: 10px;
+
+  ${respondTo.desktop(css`
+    margin-bottom: 0;
+  `)}
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.a`
+  position: relative;
+  display: inline-block;
+  width: 100%;
   padding: 5px 10px;
   font-size: ${({ theme }) => theme.font.size.l};
   color: ${({ theme }) => theme.colors.white};
+
+  ::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-right: -6px;
+    top: 12px;
+    left: -20px;
+    opacity: 0;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid ${({ theme }) => theme.colors.white};
+  
+    ${respondTo.desktop(css`
+      top: 7px;
+      left: -7px;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 7px solid ${({ theme }) => theme.colors.secondary};
+    `)}
+  }
+
+  :hover,
+  ${/* sc-selector */ NavItem}.isCurrent & {
+    opacity: 1;
+
+    &::before {
+      transform: translateX(5px);
+      opacity: 1;
+    }
+  }
+
+  ${/* sc-selector */ NavItem}.isCurrent & {
+    color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme }) => theme.colors.white};
+
+    ${respondTo.desktop(css`
+      background-color: transparent;
+    `)}
+  }
+  
 
   ${respondTo.desktop(css`
     font-size: ${({ theme }) => theme.font.size.s};

@@ -6,17 +6,20 @@ import ProjectCard from '../ProjectCard/ProjectCard';
 const Projects = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulProject {
+      allContentfulProject(sort: {order: ASC, fields: order}) {
         nodes {
           id
           name
+          order
           techStack
           description
+          siteLink
+          repoLink
           image {
-            fluid {
-              sizes
+            fluid(maxWidth: 370) {
               src
               srcSet
+              sizes
             }
           }
         }
@@ -24,14 +27,7 @@ const Projects = () => {
     }
   `);
 
-  const projectsData = [];
-  const projectsDataOrg = data.allContentfulProject.nodes;
-
-  projectsDataOrg.forEach(el => {
-    for (let i = 0; i < 6; i += 1) {
-      projectsData.push(el);
-    }
-  });
+  const projectsData = data.allContentfulProject.nodes;
 
   return (
     <Styled.Wrapper>
@@ -42,6 +38,9 @@ const Projects = () => {
             key={`${project.id}-${Math.random()}`}
             name={project.name}
             description={project.description}
+            techStack={project.techStack}
+            siteLink={project.siteLink}
+            repoLink={project.repoLink}
             image={project.image}
           />
         ))}

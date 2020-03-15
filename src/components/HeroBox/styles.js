@@ -46,7 +46,11 @@ const HeadingBase = styled.span`
   white-space: nowrap;
   border-right: 2px solid transparent;
   font-size: ${({ theme }) => theme.font.size.l};
-  font-size: calc(2.5rem + 1vw);
+  font-size: calc(2.1rem + 1vw);
+
+  ${respondTo.phonelg(css`
+    font-size: calc(2.5rem + 1vw);
+  `)}
 
   ${respondTo.fullhd(css`
     font-size: ${({ theme }) => theme.font.size.xl};
