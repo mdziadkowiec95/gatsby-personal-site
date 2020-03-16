@@ -18,6 +18,7 @@ const Header = () => {
   };
 
   const hasBackgroundCondition  = pageYOffset > 200;
+  
   return (
     <Styled.Wrapper isFixed={scrollDirection === 'up'} hasBackground={hasBackgroundCondition}>
         <Hamburger onClick={handleNavOpen} />

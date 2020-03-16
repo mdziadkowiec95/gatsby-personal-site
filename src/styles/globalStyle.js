@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-size: 62.5%;
     scroll-behavior: smooth;
+    font-family: ${({ theme }) => theme.font.family.primary};
   }
 
   * {
@@ -29,7 +30,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: ${({ theme }) => theme.font.family.primary};
     color: ${({ theme }) => theme.colors.dark}
   }
 

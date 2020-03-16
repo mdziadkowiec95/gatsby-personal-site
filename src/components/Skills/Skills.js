@@ -6,7 +6,7 @@ import SkillCard from '../SkillCard/SkillCard';
 const Skills = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulSkills {
+      allContentfulSkills(sort: {order: ASC, fields: order}) {
         nodes {
           id
           name

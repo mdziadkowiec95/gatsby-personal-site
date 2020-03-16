@@ -4,6 +4,7 @@ import Container from '../../components/Container/Container';
 import * as Styled from './styles';
 import HeroBox from '../../components/HeroBox/HeroBox';
 import SocialBar from '../../components/SocialBar/SocialBar';
+import MouseIconSVG from '../../assets/images/icon-mouse.svg';
 
 const HeroTemplate = () => {
   const getHeroPortraitImageSrc = () => {
@@ -30,9 +31,9 @@ const HeroTemplate = () => {
         <Styled.HeroInner>
           <HeroBox />
         </Styled.HeroInner>
-        <a href="#about">
-          <Styled.MouseIcon />
-        </a>
+        <Styled.MouseIcon href="#about">
+          <MouseIconSVG />
+        </Styled.MouseIcon>
       </Container>
       <SocialBar />
     </Styled.Wrapper>

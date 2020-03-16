@@ -16,10 +16,8 @@ const Projects = () => {
           siteLink
           repoLink
           image {
-            fluid(maxWidth: 370) {
-              src
-              srcSet
-              sizes
+            fixed(width: 370) {
+              ...GatsbyContentfulFixed
             }
           }
         }

@@ -23,6 +23,9 @@ export const SkillItem = styled.div`
 
   ${respondTo.tablet(css`
     flex: calc(50% - 2 * 15px) 1 1;
+    
+    // IE11 fallback
+    -ms-flex: 25% 0 0;
   `)}
 
   ${respondTo.desktop(css`

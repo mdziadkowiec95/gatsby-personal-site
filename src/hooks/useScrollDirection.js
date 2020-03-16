@@ -8,23 +8,23 @@ import useEventListener from './useEventListener';
  */
 
 const useScrollDirection = (initialDirection) => {
-    if (typeof window === 'undefined') return [];
+  if (typeof window === 'undefined') return ['up', 0];
 
-    const [lastScrollPos, setLastScrollPos] = useState(0);
-    const [direction, setDirection] = useState(initialDirection);
+  const [lastScrollPos, setLastScrollPos] = useState(0);
+  const [direction, setDirection] = useState(initialDirection);
 
-    const hadndleDirectionChange = useThrottledFn(() => {
-        if (lastScrollPos > window.pageYOffset) {
-            setDirection('up');
-          } else {
-            setDirection('down');
-          }
-          setLastScrollPos(window.pageYOffset);
-    }, 200);
-    
-    useEventListener('scroll', hadndleDirectionChange);
+  const hadndleDirectionChange = useThrottledFn(() => {
+      if (lastScrollPos > window.pageYOffset) {
+          setDirection('up');
+        } else {
+          setDirection('down');
+        }
+        setLastScrollPos(window.pageYOffset);
+  }, 200);
   
-    return [direction, window.pageYOffset];
+  useEventListener('scroll', hadndleDirectionChange);
+
+  return [direction, window.pageYOffset];
 }
 
   export default useScrollDirection;

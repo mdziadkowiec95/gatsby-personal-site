@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import { respondTo } from '../../styles/mixins';
-import MouseIconSVG from '../../assets/images/icon-mouse.svg';
 
 export const Wrapper = styled.section`
   position: relative;
@@ -9,7 +8,6 @@ export const Wrapper = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
-  /* padding: 20px; */
   background-color: unset;
   z-index: 0;
 
@@ -74,7 +72,7 @@ export const HeroInner = styled.div`
   `)}
 `;
 
-export const MouseIcon = styled(MouseIconSVG)`
+export const MouseIcon = styled.a`
   position: absolute;
   bottom: 10%;
   left: 50%;

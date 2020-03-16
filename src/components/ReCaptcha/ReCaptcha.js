@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styled, { css, keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
