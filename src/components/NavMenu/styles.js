@@ -62,7 +62,7 @@ export const NavWrap = styled.nav`
       height: auto;
       opacity: 1;
       border-radius: 0;
-      padding: 30px 40px 30px 0;
+      padding: 20px 40px 20px 0;
       transition: box-shadow .3s ease-in-out;
       
       ${({ hasBackground }) => hasBackground &&  css`
@@ -93,7 +93,7 @@ export const NavLogo = styled.div`
         `}
 
   ${respondTo.desktop(css`
-    top: 16px;
+    top: 9px;
     left: 30px;
     width: 49px;
     opacity: 1;

@@ -103,7 +103,7 @@ const ContactForm = () => {
         touched={form.touched.message}
       />
       <Styled.ActionBox>
-        <div>
+        <Styled.CaptchaWrap>
           <ReCaptcha
             isError={captchaError}
             onChange={token => {
@@ -116,7 +116,7 @@ const ContactForm = () => {
             }}
             ref={captchaRef}
           />
-        </div>
+        </Styled.CaptchaWrap>
         <Styled.SubmitBtn type="submit">Send a message</Styled.SubmitBtn>
       </Styled.ActionBox>
           {serverResponse && <Styled.EmailSentText isSuccess={serverResponse.success}>{serverResponse.success ? 'Message has been sent, thank you!' : `I'm sorry, unexpected error occured...`}</Styled.EmailSentText>}

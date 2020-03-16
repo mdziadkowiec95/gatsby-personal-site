@@ -20,6 +20,13 @@ export const SubmitBtn = styled(Button)`
   `)}
 `;
 
+export const CaptchaWrap = styled.div`
+  ${respondTo.desktop(css`
+    flex: 1;
+    text-align: right;
+  `)}
+`
+
 export const CaptchaErr = styled.p`
   margin-top: 10px;
   text-align: center;

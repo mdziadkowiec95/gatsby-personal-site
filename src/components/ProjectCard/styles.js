@@ -50,7 +50,7 @@ export const Description = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.font.size.xs};
 
-  ${respondTo.tablet(css`
+  ${respondTo.desktop(css`
     font-size: ${({ theme }) => theme.font.size.s};
   `)}
 `;
@@ -59,13 +59,14 @@ export const VisitButton = styled(Button)`
   align-self: center;
 `;
 
-export const GithubLink = styled.a``;
-
-export const GithubIcon = styled(GithubIconSVG)`
+export const GithubLink = styled.a`
   position: absolute;
   top: 10px;
   right: 10px;
   width: 30px;
+`;
+
+export const GithubIcon = styled(GithubIconSVG)`
   fill: ${({ theme }) => theme.colors.white};
   transition: fill 0.3s ease-in-out;
 
@@ -140,7 +141,7 @@ export const Wrapper = styled.div`
             ${`${cardOverlayNoHover(theme)}, 
             ${cardOverlayNoHover(theme)}`}
           ),
-          url(${image.fluid.src});
+          url(${image.fixed.src});
       `};
   }
 
