@@ -75,6 +75,11 @@ export const GithubIcon = styled(GithubIconSVG)`
   }
 `;
 
+export const ScreenImg = styled.div`
+  position: relative;
+  z-index: -1;
+`;
+
 const cardOverlayNoHover = theme =>
   rgba(darken(0.05, theme.colors.tertiary), 0.45);
 
@@ -121,6 +126,19 @@ export const Wrapper = styled.div`
   }
 
   ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: ${({ theme }) => `linear-gradient(
+            ${`${cardOverlayNoHover(theme)}, 
+            ${cardOverlayNoHover(theme)}`}
+          )`};
+  }
+
+  ${/* sc-selector */ ScreenImg} {
     /* @include hardware(); */
 
     backface-visibility: hidden;
@@ -133,16 +151,6 @@ export const Wrapper = styled.div`
     background: no-repeat center / cover;
     border-radius: 15px;
     transition: transform 0.3s ease;
-
-    ${({ theme, image }) =>
-      image &&
-      css`
-        background-image: linear-gradient(
-            ${`${cardOverlayNoHover(theme)}, 
-            ${cardOverlayNoHover(theme)}`}
-          ),
-          url(${image.fixed.src});
-      `};
   }
 
   :hover {
@@ -153,7 +161,7 @@ export const Wrapper = styled.div`
       opacity: 1;
     }
 
-    ::after {
+    ${/* sc-selector */ ScreenImg} {
       transform: scale(1.1);
     }
 
