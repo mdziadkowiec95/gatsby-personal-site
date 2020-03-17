@@ -31,7 +31,7 @@ const AboutTemplate = () => {
         </SectionHeading>
         <Styled.Inner>
           <Styled.Description>
-            {aboutData.description.description}
+            {aboutData.description.description} {aboutData.musicIcon && <>&#127925;</>}
           </Styled.Description>
           <Styled.AboutImg
             fluid={aboutData.image.fluid}

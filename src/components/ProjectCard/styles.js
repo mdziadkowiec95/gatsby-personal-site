@@ -81,7 +81,7 @@ export const ScreenImg = styled.div`
 `;
 
 const cardOverlayNoHover = theme =>
-  rgba(darken(0.05, theme.colors.tertiary), 0.45);
+  rgba(darken(0.1, theme.colors.primary), 0.45);
 
 export const Wrapper = styled.div`
   perspective: 1000;
