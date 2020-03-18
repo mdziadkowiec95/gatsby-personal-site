@@ -63,6 +63,8 @@ const ContactForm = () => {
             } else {
               setServerResponse(data);
             }
+
+            form.setSubmitting(false);
         })
         .catch(err => {
           // eslint-disable-next-line no-console
@@ -117,7 +119,7 @@ const ContactForm = () => {
             ref={captchaRef}
           />
         </Styled.CaptchaWrap>
-        <Styled.SubmitBtn type="submit">Send a message</Styled.SubmitBtn>
+        <Styled.SubmitBtn type="submit" disabled={!form.isValid || captchaError}>Send a message</Styled.SubmitBtn>
       </Styled.ActionBox>
           {serverResponse && <Styled.EmailSentText isSuccess={serverResponse.success}>{serverResponse.success ? 'Message has been sent, thank you!' : `I'm sorry, unexpected error occured...`}</Styled.EmailSentText>}
       {captchaError && (

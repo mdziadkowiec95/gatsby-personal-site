@@ -1,29 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'gatsby-image';
 import * as Styled from './styles';
 
 const ProjectCard = ({ name, description, siteLink, repoLink, image }) => {
   return (
-    <Styled.Wrapper image={image}>
+    <Styled.Wrapper>
+      <Styled.ScreenImg>
+        <Image style={{ height: '100%' }} fluid={image.fluid} />
+      </Styled.ScreenImg>
       <Styled.Label>HTML/CSS/JS/jQuery/Gulp</Styled.Label>
       <Styled.Body>
-       {repoLink && <Styled.GithubLink 
-          target="_blank"
-          rel="noopener noreferrer"
-          href={repoLink}>
-          <Styled.GithubIcon />
-        </Styled.GithubLink>}
+        {repoLink && (
+          <Styled.GithubLink
+            target="_blank"
+            rel="noopener noreferrer"
+            href={repoLink}
+          >
+            <Styled.GithubIcon />
+          </Styled.GithubLink>
+        )}
         <Styled.Name>{name}</Styled.Name>
         <Styled.Description>{description}</Styled.Description>
-        {siteLink && <Styled.VisitButton
-          as="a"
-          href={siteLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          secondary
-        >
-          Visit website
-        </Styled.VisitButton>}
+        {siteLink && (
+          <Styled.VisitButton
+            as="a"
+            href={siteLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            secondary
+          >
+            Visit website
+          </Styled.VisitButton>
+        )}
       </Styled.Body>
     </Styled.Wrapper>
   );
@@ -41,7 +50,7 @@ ProjectCard.propTypes = {
 
 ProjectCard.defaultProps = {
   siteLink: '',
-  repoLink: ''
-}
+  repoLink: '',
+};
 
 export default ProjectCard;

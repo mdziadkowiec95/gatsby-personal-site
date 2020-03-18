@@ -1,23 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as Styled from './styles';
-import GithubIconSvg from '../../assets/images/icons/github-rounded.svg';
-import LinkedinIconSvg from '../../assets/images/icons/linkedin.svg';
-import FacebookIconSvg from '../../assets/images/icons/facebook.svg';
-import CodepenIconSvg from '../../assets/images/icons/codepen.svg';
-
-const getIconComponnet = iconType => {
-  const iconComponentMap = {
-    github: GithubIconSvg,
-    facebook: FacebookIconSvg,
-    linkedin: LinkedinIconSvg,
-    codepen: CodepenIconSvg,
-  };
-
-  const Icon = iconComponentMap[iconType];
-
-  return Icon ? <Icon className="socialIcon" /> : null;
-};
+import { getIconComponent } from '../../helpers/getIconComponent';
 
 const SocialBar = () => {
   const data = useStaticQuery(graphql`
@@ -44,7 +28,7 @@ const SocialBar = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {getIconComponnet(item.icon)}
+          {getIconComponent(item.icon)}
         </Styled.Link>
       ))}
     </Styled.Wrapper>

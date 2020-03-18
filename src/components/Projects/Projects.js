@@ -6,7 +6,7 @@ import ProjectCard from '../ProjectCard/ProjectCard';
 const Projects = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulProject(sort: {order: ASC, fields: order}) {
+      allContentfulProject(sort: { order: ASC, fields: order }) {
         nodes {
           id
           name
@@ -16,8 +16,8 @@ const Projects = () => {
           siteLink
           repoLink
           image {
-            fixed(width: 370) {
-              ...GatsbyContentfulFixed
+            fluid(maxWidth: 370, quality: 100) {
+              ...GatsbyContentfulFluid
             }
           }
         }
