@@ -3,7 +3,7 @@ import { respondTo } from '../../styles/mixins';
 
 export const Wrapper = styled.section`
   position: relative;
-  padding: 100px 0;
+  padding: 50px 0;
 
   ::before {
     content: '';
@@ -16,7 +16,7 @@ export const Wrapper = styled.section`
     background-color: ${({ theme }) => theme.colors.primary};
 
     ${respondTo.desktop(css`
-      height: 600px;
+      height: 500px;
     `)};
   }
 `;

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import { respondTo } from '../../styles/mixins';
+import { breakpoints } from '../../styles/variables';
 
 export const Wrapper = styled.section`
   position: relative;
@@ -36,16 +37,23 @@ export const PortraitImg = styled(Image)`
   display: none;
   max-width: 30vw;
 
+
+
   ${respondTo.desktop(css`
     display: block;
     position: absolute !important;
-    left: 9vw;
+    left: 15vw;
     bottom: 0;
     z-index: -1;
-    width: 35%;
+    width: 22%;
     max-width: 340px;
     filter: saturate(80%);
   `)}
+
+    @media (min-width: ${breakpoints.desktop}) and (min-height: 700px) {
+      left: 9vw;
+      width: 35%;
+    }
 
   ${respondTo.widescreen(css``)}
 

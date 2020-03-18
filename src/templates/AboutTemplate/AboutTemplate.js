@@ -17,6 +17,7 @@ const AboutTemplate = () => {
           description {
             description
           }
+          musicIcon
         }
       }
     }

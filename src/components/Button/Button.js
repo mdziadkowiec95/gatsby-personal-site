@@ -14,6 +14,11 @@ const Button = styled.button`
   white-space: nowrap;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
+  :disabled {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+
   :hover {
     background-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.white};
