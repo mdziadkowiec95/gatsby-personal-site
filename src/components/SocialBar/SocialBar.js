@@ -6,7 +6,7 @@ import { getIconComponent } from '../../helpers/getIconComponent';
 const SocialBar = () => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulSocials(sort: { fields: order, order: ASC }) {
+      allContentfulSocialBar(sort: { fields: order, order: ASC }) {
         nodes {
           id
           link
@@ -17,7 +17,7 @@ const SocialBar = () => {
     }
   `);
 
-  const socialItems = data.allContentfulSocials.nodes;
+  const socialItems = data.allContentfulSocialBar.nodes;
 
   return (
     <Styled.Wrapper>
